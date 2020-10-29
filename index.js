@@ -5,7 +5,8 @@ const ObjectId = mongodb.ObjectId;
 
 (async () => {
 
-const connectionString = 'mongodb://localhost:27017';
+const connectionString = 'mongodb+srv://admin:admin@cluster0.fh2w8.mongodb.net/ocean_mongodb?retryWrites=true&w=majority
+';
 
 console.info('Conectando ao banco de dados MongoDB...');
 
@@ -13,7 +14,7 @@ const options = {
     useUnifiedTopology: true
 };
 
-//const client = await mongodb.MongoClient.connect(connectionString, options);
+const client = await mongodb.MongoClient.connect(connectionString, options);
 
 console.info('MongoDB conectado com sucesso!');
 
@@ -60,7 +61,7 @@ app.get('/', function (req, res) {
 
 //const db = client.db('ocean_backend_27_10_2020');
 //const mensagens = db.collection('mensagens');
-/*
+
 // Read all
 app.get('/mensagem', async function (req, res) {
     const findResult = await mensagens.find().toArray();
@@ -117,7 +118,7 @@ app.delete('/mensagem/:id', async function (req, res) {
 
     res.send(`A mensagem de ID ${id} foi removida com sucesso.`);
 });
-*/
+
 app.listen(port, function () {
     console.info('App rodando em http://localhost:' + port);
 });
